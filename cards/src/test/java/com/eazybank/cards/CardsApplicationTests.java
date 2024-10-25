@@ -1,4 +1,4 @@
-package cards;
+package com.eazybank.cards;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
