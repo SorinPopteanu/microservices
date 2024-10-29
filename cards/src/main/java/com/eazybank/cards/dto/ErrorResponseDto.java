@@ -1,36 +1,37 @@
-package com.eazybank.accounts.dto;
+package com.eazybank.cards.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.http.HttpStatus;
+
 import java.time.LocalDateTime;
 
-@Data
-@AllArgsConstructor
+@Data @AllArgsConstructor
 @Schema(
         name = "ErrorResponse",
         description = "Schema to hold error response information"
 )
-public class ErrorResponseDTO {
+public class ErrorResponseDto {
 
     @Schema(
-            description = "API Path where the error occurred"
+            description = "API path invoked by client"
     )
-    private String apiPath;
+    private  String apiPath;
 
     @Schema(
-            description = "HTTP Status code of the error"
+            description = "Error code representing the error happened"
     )
     private HttpStatus errorCode;
 
     @Schema(
-            description = "Error message"
+            description = "Error message representing the error happened"
     )
-    private String errorMessage;
+    private  String errorMessage;
 
     @Schema(
-            description = "Time when the error occurred"
+            description = "Time representing when the error happened"
     )
     private LocalDateTime errorTime;
+
 }

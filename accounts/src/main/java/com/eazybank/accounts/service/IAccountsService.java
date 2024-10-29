@@ -1,28 +1,28 @@
 package com.eazybank.accounts.service;
 
-import com.eazybank.accounts.dto.CustomerDTO;
+import com.eazybank.accounts.dto.CustomerDto;
 
 public interface IAccountsService {
 
     /**
      *
-     * @param customerDTO - CustomerDTO Object
+     * @param customerDTO - CustomerDto Object
      */
-    void createAccount(CustomerDTO customerDTO);
+    void createAccount(CustomerDto customerDTO);
 
     /**
      *
      * @param mobileNumber - Input Mobile Number
      * @return - Accounts Details based on given mobileNumber
      */
-    CustomerDTO fetchAccount(String mobileNumber);
+    CustomerDto fetchAccount(String mobileNumber);
 
     /**
      *
-     * @param customerDTO - CustomerDTO Object
+     * @param customerDTO - CustomerDto Object
      * @return - Boolean indicating if the update of Account details is successful or not
      */
-    boolean updateAccount(CustomerDTO customerDTO);
+    boolean updateAccount(CustomerDto customerDTO);
 
     /**
      *

@@ -1,6 +1,6 @@
 package com.eazybank.loans.service;
 
-import com.eazybank.loans.dto.LoansDTO;
+import com.eazybank.loans.dto.LoansDto;
 
 public interface ILoansService {
 
@@ -15,14 +15,14 @@ public interface ILoansService {
      * @param mobileNumber - Input mobile Number
      *  @return Loan Details based on a given mobileNumber
      */
-    LoansDTO fetchLoan(String mobileNumber);
+    LoansDto fetchLoan(String mobileNumber);
 
     /**
      *
-     * @param loansDTO - LoansDTO Object
+     * @param loansDTO - LoansDto Object
      * @return boolean indicating if the update of card details is successful or not
      */
-    boolean updateLoan(LoansDTO loansDTO);
+    boolean updateLoan(LoansDto loansDTO);
 
     /**
      *

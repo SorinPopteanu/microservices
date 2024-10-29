@@ -9,7 +9,7 @@ import lombok.Data;
         description = "Schema to hold successful response information"
 )
 @Data @AllArgsConstructor
-public class ResponseDTO {
+public class ResponseDto {
 
     @Schema(
             description = "Status code in the response"

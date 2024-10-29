@@ -1,11 +1,11 @@
 package com.eazybank.loans.mapper;
 
-import com.eazybank.loans.dto.LoansDTO;
+import com.eazybank.loans.dto.LoansDto;
 import com.eazybank.loans.entity.Loans;
 
 public class LoansMapper {
 
-    public static LoansDTO mapToLoansDTO(Loans loans, LoansDTO loansDTO) {
+    public static LoansDto mapToLoansDTO(Loans loans, LoansDto loansDTO) {
         loansDTO.setLoanNumber(loans.getLoanNumber());
         loansDTO.setLoanType(loans.getLoanType());
         loansDTO.setMobileNumber(loans.getMobileNumber());
@@ -15,7 +15,7 @@ public class LoansMapper {
         return loansDTO;
     }
 
-    public static Loans mapToLoans(LoansDTO loansDTO, Loans loans) {
+    public static Loans mapToLoans(LoansDto loansDTO, Loans loans) {
         loans.setLoanNumber(loansDTO.getLoanNumber());
         loans.setLoanType(loansDTO.getLoanType());
         loans.setMobileNumber(loansDTO.getMobileNumber());

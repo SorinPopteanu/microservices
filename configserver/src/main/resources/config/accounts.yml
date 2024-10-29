@@ -1,0 +1,12 @@
+
+build:
+  version: "3.0"
+
+accounts:
+  message: "Welcome to EazyBank accounts related local APIs"
+  contactDetails:
+    name: "Sorin"
+    email: "sp@gmail.com"
+  onCallSupport:
+    - (+40) 731 518 101
+    - (+40) 732 528 202

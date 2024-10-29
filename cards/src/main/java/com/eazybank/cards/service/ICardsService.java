@@ -1,6 +1,6 @@
 package com.eazybank.cards.service;
 
-import com.eazybank.cards.dto.CardsDTO;
+import com.eazybank.cards.dto.CardsDto;
 
 public interface ICardsService {
 
@@ -15,14 +15,14 @@ public interface ICardsService {
      * @param mobileNumber - Input mobile Number
      *  @return Card Details based on a given mobileNumber
      */
-    CardsDTO fetchCard(String mobileNumber);
+    CardsDto fetchCard(String mobileNumber);
 
     /**
      *
-     * @param cardsDTO - CardsDTO Object
+     * @param cardsDTO - CardsDto Object
      * @return boolean indicating if the update of card details is successful or not
      */
-    boolean updateCard(CardsDTO cardsDTO);
+    boolean updateCard(CardsDto cardsDTO);
 
     /**
      *

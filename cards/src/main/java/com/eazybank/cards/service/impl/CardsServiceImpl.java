@@ -1,11 +1,11 @@
 package com.eazybank.cards.service.impl;
 
 import com.eazybank.cards.constants.CardsConstants;
+import com.eazybank.cards.dto.CardsDto;
 import com.eazybank.cards.entity.Cards;
 import com.eazybank.cards.exception.CardAlreadyExistsException;
 import com.eazybank.cards.exception.ResourceNotFoundException;
 import com.eazybank.cards.service.ICardsService;
-import com.eazybank.cards.dto.CardsDTO;
 import com.eazybank.cards.mapper.CardsMapper;
 import com.eazybank.cards.repository.CardsRepository;
 import lombok.AllArgsConstructor;
@@ -54,20 +54,20 @@ public class CardsServiceImpl implements ICardsService {
      * @return Card Details based on a given mobileNumber
      */
     @Override
-    public CardsDTO fetchCard(String mobileNumber) {
+    public CardsDto fetchCard(String mobileNumber) {
         Cards cards = cardsRepository.findByMobileNumber(mobileNumber).orElseThrow(
                 () -> new ResourceNotFoundException("Card", "mobileNumber", mobileNumber)
         );
-        return CardsMapper.mapToCardsDTO(cards, new CardsDTO());
+        return CardsMapper.mapToCardsDTO(cards, new CardsDto());
     }
 
     /**
      *
-     * @param cardsDTO - CardsDTO Object
+     * @param cardsDTO - CardsDto Object
      * @return boolean indicating if the update of card details is successful or not
      */
     @Override
-    public boolean updateCard(CardsDTO cardsDTO) {
+    public boolean updateCard(CardsDto cardsDTO) {
         Cards cards = cardsRepository.findByCardNumber(cardsDTO.getCardNumber()).orElseThrow(
                 () -> new ResourceNotFoundException("Card", "CardNumber", cardsDTO.getCardNumber()));
         CardsMapper.mapToCards(cardsDTO, cards);

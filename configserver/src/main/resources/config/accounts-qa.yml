@@ -1,0 +1,11 @@
+build:
+  version: "2.0"
+
+accounts:
+  message: "Welcome to EazyBank accounts related QA APIs"
+  contactDetails:
+    name: "Sorin - QA Lead"
+    email: "s@gmail.com"
+  onCallSupport:
+    - (+40) 731 518 303
+    - (+40) 732 528 404

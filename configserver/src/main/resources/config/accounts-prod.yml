@@ -1,0 +1,11 @@
+build:
+  version: "1.0"
+
+accounts:
+  message: "Welcome to EazyBank accounts related prod APIs"
+  contactDetails:
+    name: "Popteanu - Product Owner"
+    email: "p@gmail.com"
+  onCallSupport:
+    - (+40) 731 518 505
+    - (+40) 732 528 606

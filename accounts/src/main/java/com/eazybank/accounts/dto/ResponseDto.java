@@ -10,7 +10,7 @@ import lombok.Data;
         name = "Response",
         description = "Schema to hold successful response information"
 )
-public class ResponseDTO {
+public class ResponseDto {
 
     @Schema(
             description = "Status code of the response"

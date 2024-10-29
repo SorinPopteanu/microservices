@@ -1,7 +1,7 @@
 package com.eazybank.loans.service.impl;
 
 import com.eazybank.loans.constants.LoansConstants;
-import com.eazybank.loans.dto.LoansDTO;
+import com.eazybank.loans.dto.LoansDto;
 import com.eazybank.loans.entity.Loans;
 import com.eazybank.loans.exception.LoanAlreadyExistsException;
 import com.eazybank.loans.exception.ResourceNotFoundException;
@@ -54,20 +54,20 @@ public class LoansServiceImpl implements ILoansService {
      * @return Loan Details based on a given mobileNumber
      */
     @Override
-    public LoansDTO fetchLoan(String mobileNumber) {
+    public LoansDto fetchLoan(String mobileNumber) {
         Loans loans = loansRepository.findByMobileNumber(mobileNumber).orElseThrow(
                 () -> new ResourceNotFoundException("Loan", "mobileNumber", mobileNumber)
         );
-        return LoansMapper.mapToLoansDTO(loans, new LoansDTO());
+        return LoansMapper.mapToLoansDTO(loans, new LoansDto());
     }
 
     /**
      *
-     * @param loansDTO - LoansDTO Object
+     * @param loansDTO - LoansDto Object
      * @return boolean indicating if the update of loan details is successful or not
      */
     @Override
-    public boolean updateLoan(LoansDTO loansDTO) {
+    public boolean updateLoan(LoansDto loansDTO) {
         Loans loans = loansRepository.findByLoanNumber(loansDTO.getLoanNumber()).orElseThrow(
                 () -> new ResourceNotFoundException("Loan", "LoanNumber", loansDTO.getLoanNumber()));
         LoansMapper.mapToLoans(loansDTO, loans);

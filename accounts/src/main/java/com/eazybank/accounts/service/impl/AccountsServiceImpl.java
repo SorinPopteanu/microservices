@@ -1,9 +1,9 @@
 package com.eazybank.accounts.service.impl;
 
+import com.eazybank.accounts.dto.CustomerDto;
 import com.eazybank.accounts.exception.ResourceNotFoundException;
 import com.eazybank.accounts.constants.AccountsConstants;
-import com.eazybank.accounts.dto.AccountsDTO;
-import com.eazybank.accounts.dto.CustomerDTO;
+import com.eazybank.accounts.dto.AccountsDto;
 import com.eazybank.accounts.entity.Accounts;
 import com.eazybank.accounts.entity.Customer;
 import com.eazybank.accounts.exception.CustomerAlreadyExistsException;
@@ -25,7 +25,7 @@ public class AccountsServiceImpl implements IAccountsService {
     private CustomerRepository customerRepository;
 
     @Override
-    public void createAccount(CustomerDTO customerDTO) {
+    public void createAccount(CustomerDto customerDTO) {
         Customer customer = CustomerMapper.mapToCustomer(customerDTO, new Customer());
         Optional<Customer> optionalCustomer = customerRepository.findByMobileNumber(customerDTO.getMobileNumber());
         if (optionalCustomer.isPresent()) {
@@ -55,26 +55,26 @@ public class AccountsServiceImpl implements IAccountsService {
      * @return - Accounts Details based on given mobileNumber
      */
     @Override
-    public CustomerDTO fetchAccount(String mobileNumber) {
+    public CustomerDto fetchAccount(String mobileNumber) {
         Customer customer = customerRepository.findByMobileNumber(mobileNumber).orElseThrow(
                 () -> new ResourceNotFoundException("Customer", "mobileNumber", mobileNumber)
         );
         Accounts accounts = accountsRepository.findByCustomerId(customer.getCustomerId()).orElseThrow(
                 () -> new ResourceNotFoundException("Account", "customerId", customer.getCustomerId().toString())
         );
-        CustomerDTO customerDTO = CustomerMapper.mapToCustomerDTO(customer, new CustomerDTO());
-        customerDTO.setAccountsDTO(AccountsMapper.mapToAccountsDTO(accounts, new AccountsDTO()));
+        CustomerDto customerDTO = CustomerMapper.mapToCustomerDTO(customer, new CustomerDto());
+        customerDTO.setAccountsDTO(AccountsMapper.mapToAccountsDTO(accounts, new AccountsDto()));
         return customerDTO;
     }
 
     /**
-     * @param customerDTO - CustomerDTO Object
+     * @param customerDTO - CustomerDto Object
      * @return - Boolean indicating if the update of Account details is successful or not
      */
     @Override
-    public boolean updateAccount(CustomerDTO customerDTO) {
+    public boolean updateAccount(CustomerDto customerDTO) {
         boolean isUpdated = false;
-        AccountsDTO accountsDTO = customerDTO.getAccountsDTO();
+        AccountsDto accountsDTO = customerDTO.getAccountsDTO();
         if(accountsDTO !=null ){
             Accounts accounts = accountsRepository.findById(accountsDTO.getAccountNumber()).orElseThrow(
                     () -> new ResourceNotFoundException("Account", "AccountNumber", accountsDTO.getAccountNumber().toString())
