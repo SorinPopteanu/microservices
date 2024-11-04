@@ -68,9 +68,9 @@ public class LoansController {
             @RequestParam
             @Pattern(regexp = "(^$|[0-9]{10})", message = "Mobile number must be 10 digits")
             String mobileNumber) {
-        LoansDto loansDTO = iLoansService.fetchLoan(mobileNumber);
+        LoansDto loansDto = iLoansService.fetchLoan(mobileNumber);
         return ResponseEntity.status(HttpStatus.OK)
-                             .body(loansDTO);
+                             .body(loansDto);
     }
 
     @Operation(summary = "Update Loan Details REST API", description = "REST API to update loan details based on a loan number")
@@ -79,8 +79,8 @@ public class LoansController {
     public ResponseEntity<ResponseDto> updateLoanDetails(
             @Valid
             @RequestBody
-            LoansDto loansDTO) {
-        boolean isUpdated = iLoansService.updateLoan(loansDTO);
+            LoansDto loansDto) {
+        boolean isUpdated = iLoansService.updateLoan(loansDto);
         if (isUpdated) {
             return ResponseEntity.status(HttpStatus.OK)
                                  .body(new ResponseDto(LoansConstants.STATUS_200, LoansConstants.MESSAGE_200));

@@ -19,10 +19,10 @@ public interface ICardsService {
 
     /**
      *
-     * @param cardsDTO - CardsDto Object
+     * @param cardsDto - CardsDto Object
      * @return boolean indicating if the update of card details is successful or not
      */
-    boolean updateCard(CardsDto cardsDTO);
+    boolean updateCard(CardsDto cardsDto);
 
     /**
      *

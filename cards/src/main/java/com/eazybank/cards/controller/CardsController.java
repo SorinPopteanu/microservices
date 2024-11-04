@@ -69,9 +69,9 @@ public class CardsController {
             @RequestParam
             @Pattern(regexp = "(^$|[0-9]{10})", message = "Mobile number must be 10 digits")
             String mobileNumber) {
-        CardsDto cardsDTO = iCardsService.fetchCard(mobileNumber);
+        CardsDto cardsDto = iCardsService.fetchCard(mobileNumber);
         return ResponseEntity.status(HttpStatus.OK)
-                             .body(cardsDTO);
+                             .body(cardsDto);
     }
 
     @Operation(summary = "Update Card Details REST API", description = "REST API to update card details based on a card number")
@@ -80,8 +80,8 @@ public class CardsController {
     public ResponseEntity<ResponseDto> updateCardDetails(
             @Valid
             @RequestBody
-            CardsDto cardsDTO) {
-        boolean isUpdated = iCardsService.updateCard(cardsDTO);
+            CardsDto cardsDto) {
+        boolean isUpdated = iCardsService.updateCard(cardsDto);
         if (isUpdated) {
             return ResponseEntity.status(HttpStatus.OK)
                                  .body(new ResponseDto(CardsConstants.STATUS_200, CardsConstants.MESSAGE_200));

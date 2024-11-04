@@ -5,17 +5,17 @@ import com.eazybank.accounts.dto.AccountsDto;
 
 public class AccountsMapper {
 
-    public static AccountsDto mapToAccountsDTO(Accounts accounts, AccountsDto accountsDTO) {
-        accountsDTO.setAccountNumber(accounts.getAccountNumber());
-        accountsDTO.setAccountType(accounts.getAccountType());
-        accountsDTO.setBranchAddress(accounts.getBranchAddress());
-        return accountsDTO;
+    public static AccountsDto mapToAccountsDto(Accounts accounts, AccountsDto accountsDto) {
+        accountsDto.setAccountNumber(accounts.getAccountNumber());
+        accountsDto.setAccountType(accounts.getAccountType());
+        accountsDto.setBranchAddress(accounts.getBranchAddress());
+        return accountsDto;
     }
 
-    public static Accounts mapToAccounts(AccountsDto accountsDTO, Accounts accounts) {
-        accounts.setAccountNumber(accountsDTO.getAccountNumber());
-        accounts.setAccountType(accountsDTO.getAccountType());
-        accounts.setBranchAddress(accountsDTO.getBranchAddress());
+    public static Accounts mapToAccounts(AccountsDto accountsDto, Accounts accounts) {
+        accounts.setAccountNumber(accountsDto.getAccountNumber());
+        accounts.setAccountType(accountsDto.getAccountType());
+        accounts.setBranchAddress(accountsDto.getBranchAddress());
         return accounts;
     }
 }

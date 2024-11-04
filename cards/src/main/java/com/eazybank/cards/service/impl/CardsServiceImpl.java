@@ -58,19 +58,19 @@ public class CardsServiceImpl implements ICardsService {
         Cards cards = cardsRepository.findByMobileNumber(mobileNumber).orElseThrow(
                 () -> new ResourceNotFoundException("Card", "mobileNumber", mobileNumber)
         );
-        return CardsMapper.mapToCardsDTO(cards, new CardsDto());
+        return CardsMapper.mapToCardsDto(cards, new CardsDto());
     }
 
     /**
      *
-     * @param cardsDTO - CardsDto Object
+     * @param cardsDto - CardsDto Object
      * @return boolean indicating if the update of card details is successful or not
      */
     @Override
-    public boolean updateCard(CardsDto cardsDTO) {
-        Cards cards = cardsRepository.findByCardNumber(cardsDTO.getCardNumber()).orElseThrow(
-                () -> new ResourceNotFoundException("Card", "CardNumber", cardsDTO.getCardNumber()));
-        CardsMapper.mapToCards(cardsDTO, cards);
+    public boolean updateCard(CardsDto cardsDto) {
+        Cards cards = cardsRepository.findByCardNumber(cardsDto.getCardNumber()).orElseThrow(
+                () -> new ResourceNotFoundException("Card", "CardNumber", cardsDto.getCardNumber()));
+        CardsMapper.mapToCards(cardsDto, cards);
         cardsRepository.save(cards);
         return  true;
     }

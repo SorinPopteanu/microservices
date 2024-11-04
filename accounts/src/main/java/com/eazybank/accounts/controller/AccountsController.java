@@ -51,8 +51,8 @@ public class AccountsController {
     public ResponseEntity<ResponseDto> createAccount(
             @Valid
             @RequestBody
-            CustomerDto customerDTO) {
-        iAccountsService.createAccount(customerDTO);
+            CustomerDto customerDto) {
+        iAccountsService.createAccount(customerDto);
         return ResponseEntity.status(HttpStatus.CREATED)
                              .body(new ResponseDto(AccountsConstants.STATUS_201, AccountsConstants.MESSAGE_201));
     }
@@ -64,9 +64,9 @@ public class AccountsController {
             @RequestParam
             @Pattern(regexp = "(^$|[0-9]{10})", message = "Mobile Number must be 10 digits")
             String mobileNumber) {
-        CustomerDto customerDTO = iAccountsService.fetchAccount(mobileNumber);
+        CustomerDto customerDto = iAccountsService.fetchAccount(mobileNumber);
         return ResponseEntity.status(HttpStatus.OK)
-                             .body(customerDTO);
+                             .body(customerDto);
     }
 
     @Operation(summary = "Update Account Details REST API", description = "REST API to update Customer and Account details based on mobile number")
@@ -75,8 +75,8 @@ public class AccountsController {
     public ResponseEntity<ResponseDto> updateAccountDetails(
             @Valid
             @RequestBody
-            CustomerDto customerDTO) {
-        boolean isUpdated = iAccountsService.updateAccount(customerDTO);
+            CustomerDto customerDto) {
+        boolean isUpdated = iAccountsService.updateAccount(customerDto);
         if (isUpdated) {
             return ResponseEntity.status(HttpStatus.OK)
                                  .body(new ResponseDto(AccountsConstants.STATUS_200, AccountsConstants.MESSAGE_200));

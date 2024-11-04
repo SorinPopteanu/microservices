@@ -6,9 +6,9 @@ public interface IAccountsService {
 
     /**
      *
-     * @param customerDTO - CustomerDto Object
+     * @param customerDto - CustomerDto Object
      */
-    void createAccount(CustomerDto customerDTO);
+    void createAccount(CustomerDto customerDto);
 
     /**
      *
@@ -19,10 +19,10 @@ public interface IAccountsService {
 
     /**
      *
-     * @param customerDTO - CustomerDto Object
+     * @param customerDto - CustomerDto Object
      * @return - Boolean indicating if the update of Account details is successful or not
      */
-    boolean updateAccount(CustomerDto customerDTO);
+    boolean updateAccount(CustomerDto customerDto);
 
     /**
      *
