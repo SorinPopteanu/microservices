@@ -6,6 +6,8 @@ import com.eazybank.accounts.dto.CustomerDto;
 import com.eazybank.accounts.dto.ErrorResponseDto;
 import com.eazybank.accounts.dto.ResponseDto;
 import com.eazybank.accounts.service.IAccountsService;
+import io.github.resilience4j.ratelimiter.annotation.RateLimiter;
+import io.github.resilience4j.retry.annotation.Retry;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -14,7 +16,8 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Pattern;
-import lombok.AllArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
@@ -29,6 +32,8 @@ import org.springframework.web.bind.annotation.*;
 @Validated
 @Tag(name = "CRUD REST APIs for Accounts in EazyBank", description = "CRUD REST APIs in EazyBank for CREATE, UPDATE, FETCH and DELETE account details")
 public class AccountsController {
+
+    private static final Logger logger = LoggerFactory.getLogger(AccountsController.class);
 
     private IAccountsService iAccountsService;
 
@@ -107,20 +112,34 @@ public class AccountsController {
         }
     }
 
+    @Retry(name = "getBuildInfo", fallbackMethod = "getBuildInfoFallback")
     @Operation(summary = "Get Build information", description = "Get Build information that is deployed into accounts microservice")
     @ApiResponses({ @ApiResponse(responseCode = "200", description = "HTTP Status OK"), @ApiResponse(responseCode = "500", description = "HTTP Status Internal Server Error", content = @Content(schema = @Schema(implementation = ErrorResponseDto.class))) })
     @GetMapping("/build-info")
     public ResponseEntity<String> getBuildInfo() {
+        logger.debug("getBuildInfo() method invoked");
         return ResponseEntity.status(HttpStatus.OK)
                              .body(buildVersion);
     }
 
+    public ResponseEntity<String> getBuildInfoFallback(Throwable throwable) {
+        logger.debug("getBuildInfoFallback() method invoked");
+        return ResponseEntity.status(HttpStatus.OK)
+                             .body("0.9");
+    }
+
     @Operation(summary = "Get Java version", description = "Get Java versions details that is installed into accounts microservice")
     @ApiResponses({ @ApiResponse(responseCode = "200", description = "HTTP Status OK"), @ApiResponse(responseCode = "500", description = "HTTP Status Internal Server Error", content = @Content(schema = @Schema(implementation = ErrorResponseDto.class))) })
+    @RateLimiter(name = "getJavaVersion", fallbackMethod = "getJavaVersionFallback")
     @GetMapping("/java-version")
     public ResponseEntity<String> getJavaVersion() {
         return ResponseEntity.status(HttpStatus.OK)
                              .body(environment.getProperty("JAVA_HOME"));
+    }
+
+    public ResponseEntity<String> getJavaVersionFallback(Throwable throwable) {
+        return ResponseEntity.status(HttpStatus.OK)
+                             .body("Please try again later");
     }
 
     @Operation(summary = "Get Contact Info", description = "Contact Info details that can be reached out in case of any issues")
