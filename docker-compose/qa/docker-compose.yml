@@ -58,7 +58,7 @@ services:
       service: network-deploy-service
 
   configserver:
-    image: "sorinpopteanu/configserver:s9"
+    image: "sorinpopteanu/configserver:s11"
     container_name: configserver-ms
     ports:
       - "8071:8071"
@@ -76,7 +76,7 @@ services:
       service: microservice-base-config
 
   eurekaserver:
-    image: "sorinpopteanu/eurekaserver:s9"
+    image: "sorinpopteanu/eurekaserver:s11"
     container_name: eurekaserver-ms
     ports:
       - "8070:8070"
@@ -96,7 +96,7 @@ services:
       SPRING_APPLICATION_NAME: "eurekaserver"
 
   accounts:
-    image: "sorinpopteanu/accounts:s9"
+    image: "sorinpopteanu/accounts:s11"
     container_name: accounts-ms
     ports:
       - "8080:8080"
@@ -117,7 +117,7 @@ services:
       service: microservice-eureka-config
 
   loans:
-    image: "sorinpopteanu/loans:s9"
+    image: "sorinpopteanu/loans:s11"
     container_name: loans-ms
     ports:
       - "8090:8090"
@@ -138,7 +138,7 @@ services:
       service: microservice-eureka-config
 
   cards:
-    image: "sorinpopteanu/cards:s9"
+    image: "sorinpopteanu/cards:s11"
     container_name: cards-ms
     ports:
       - "9000:9000"
@@ -159,7 +159,7 @@ services:
       service: microservice-eureka-config
 
   gatewayserver:
-    image: "sorinpopteanu/gatewayserver:s9"
+    image: "sorinpopteanu/gatewayserver:s11"
     container_name: gatewayserver-ms
     ports:
       - "8072:8072"
