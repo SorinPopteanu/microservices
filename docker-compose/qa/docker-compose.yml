@@ -228,7 +228,7 @@ services:
       service: network-deploy-service
 
   configserver:
-    image: "sorinpopteanu/configserver:s13"
+    image: "sorinpopteanu/configserver:s14"
     container_name: configserver-ms
     ports:
       - "8071:8071"
@@ -245,7 +245,7 @@ services:
       OTEL_SERVICE_NAME: "configserver"
 
   eurekaserver:
-    image: "sorinpopteanu/eurekaserver:s13"
+    image: "sorinpopteanu/eurekaserver:s14"
     container_name: eurekaserver-ms
     ports:
       - "8070:8070"
@@ -266,7 +266,7 @@ services:
       OTEL_SERVICE_NAME: "eurekaserver"
 
   accounts:
-    image: "sorinpopteanu/accounts:s13"
+    image: "sorinpopteanu/accounts:s14"
     container_name: accounts-ms
     depends_on:
       configserver:
@@ -287,7 +287,7 @@ services:
       service: microservice-eureka-config
 
   loans:
-    image: "sorinpopteanu/loans:s13"
+    image: "sorinpopteanu/loans:s14"
     container_name: loans-ms
     depends_on:
       configserver:
@@ -308,7 +308,7 @@ services:
       service: microservice-eureka-config
 
   cards:
-    image: "sorinpopteanu/cards:s13"
+    image: "sorinpopteanu/cards:s14"
     container_name: cards-ms
     depends_on:
       configserver:
@@ -329,7 +329,7 @@ services:
       service: microservice-eureka-config
 
   gatewayserver:
-    image: "sorinpopteanu/gatewayserver:s13"
+    image: "sorinpopteanu/gatewayserver:s14"
     container_name: gatewayserver-ms
     ports:
       - "8072:8072"

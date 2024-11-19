@@ -121,7 +121,7 @@
 				<version>3.4.1</version>
 				<configuration>
 					<to>
-						<image>sorinpopteanu/${project.artifactId}:s13</image>
+						<image>sorinpopteanu/${project.artifactId}:s14</image>
 					</to>
 				</configuration>
 			</plugin>
